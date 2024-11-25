@@ -1,3 +1,3 @@
-# clone-tabnews
+# OndaAposOnda
 
 repository for training
