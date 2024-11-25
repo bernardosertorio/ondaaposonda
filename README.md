@@ -1,3 +1,1 @@
 # OndaAposOnda
-
-repository for training
