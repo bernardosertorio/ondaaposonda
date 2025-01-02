@@ -7,7 +7,7 @@ export default async function migrations(request, response) {
   const methodsNotAllowed = ["PATCH", "DELETE", "PUT"]
 
   if (methodsNotAllowed.includes(request.method)) {
-    return response.status(405).end();
+    return response.status(405).send(`Method ${request.method} Not Allowed`).end();
   }
 
   const dbClient = await database.getNewClient();
