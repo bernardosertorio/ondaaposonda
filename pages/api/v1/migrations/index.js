@@ -4,11 +4,11 @@ import database from "infra/database";
 
 export default async function migrations(request, response) {
 
-  const methodsNotAllowed = ["PATCH", "DELETE", "PUT"]
+  /*const methodsNotAllowed = ["PATCH", "DELETE", "PUT"]
 
   if (methodsNotAllowed.includes(request.method)) {
     return response.status(405).end();
-  }
+  } */
 
   const dbClient = await database.getNewClient();
 
