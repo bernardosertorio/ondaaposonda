@@ -3,14 +3,16 @@ import { join } from "node:path";
 import database from "infra/database";
 
 export default async function migrations(request, response) {
-
-  const methodsNotAllowed = ["PATCH", "DELETE", "PUT"]
+  const methodsNotAllowed = ["PATCH", "DELETE", "PUT"];
 
   if (methodsNotAllowed.includes(request.method)) {
-    return response.status(405).json({
-      error: 405,
-      message: `Method "${request.method}" Not Allowed`
-    }).end();
+    return response
+      .status(405)
+      .json({
+        error: 405,
+        message: `Method "${request.method}" Not Allowed`,
+      })
+      .end();
   }
 
   let dbClient;
@@ -24,7 +26,7 @@ export default async function migrations(request, response) {
       direction: "up",
       verbose: true,
       migrationsTable: "pgmigrations",
-    }
+    };
 
     if (request.method === "GET") {
       const pendingMigrations = await migrationRunner(defaultMigrationOptions);
@@ -32,9 +34,9 @@ export default async function migrations(request, response) {
     }
 
     if (request.method === "POST") {
-      const migratedMigrations = await migrationRunner({ 
-        ...defaultMigrationOptions, 
-        dryRun: false 
+      const migratedMigrations = await migrationRunner({
+        ...defaultMigrationOptions,
+        dryRun: false,
       });
 
       if (migratedMigrations.length > 0)
