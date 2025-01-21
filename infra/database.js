@@ -24,7 +24,7 @@ async function getNewClient() {
     password: process.env.POSTGRES_PASSWORD,
     ssl: getSSLValues(),
   });
-  
+
   await client.connect();
 
   return client;
@@ -32,7 +32,7 @@ async function getNewClient() {
 
 export default {
   query,
-  getNewClient
+  getNewClient,
 };
 
 function getSSLValues() {
